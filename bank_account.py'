@@ -1,0 +1,46 @@
+#Student Name:Mpuuga John Student ID: a095
+class BankAccount:
+    def __init__(self, account_holder: str, initial_balance: float = 0.0):
+        self.account_holder = account_holder
+        self.balance = float(initial_balance)
+    def deposit(self, amount: float):
+        """Deposits a specified amount into the account if it's greater than zero."""
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposited ${amount:.2f}. New Balance: ${self.balance:.2f}")
+        else:
+            print("Deposit amount must be positive.")
+
+    def withdraw(self, amount: float):
+        """Withdraws a specified amount if funds are sufficient and amount is positive."""
+        if amount <= 0:
+            print("Withdrawal amount must be positive.")clear
+            
+        elif amount > self.balance:
+            print(f"Insufficient funds! Current balance: ${self.balance:.2f}")
+        else:
+            self.balance -= amount
+            print(f"Withdrew ${amount:.2f}. New Balance: ${self.balance:.2f}")
+
+    def display_account_info(self):
+        """Displays the account holder's name and current balance."""
+        print(f"Account Holder: {self.account_holder} | Current Balance: ${self.balance:.2f}")
+
+if __name__ == "__main__":
+    
+    # Account 1 (Alice)
+    print("--- Testing Account 1 (Alice) ---")
+    account1 = BankAccount("Alice", 100.00)
+    account1.deposit(50.00)
+    account1.withdraw(30.00)
+    account1.withdraw(200.00)
+    account1.display_account_info()
+
+    print()
+
+    # Account 2 (Bob)
+    print("--- Testing Account 2 (Bob) ---")
+    account2 = BankAccount("Bob")
+    account2.deposit(-10.00)
+    account2.deposit(75.00)
+    account2.display_account_info()
